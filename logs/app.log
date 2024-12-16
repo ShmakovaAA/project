@@ -1,0 +1,4 @@
+Ошибка при обработке DOCX C:\Users\Роман\Desktop\Аня\дашборд.docx: 'CoreProperties' object has no attribute 'creator'
+Ошибка при обработке DOCX C:\Users\Роман\Desktop\Аня\Документ Microsoft Word.docx: Package not found at 'C:\Users\Роман\Desktop\Аня\Документ Microsoft Word.docx'
+Ошибка при обработке DOCX C:\Users\Роман\Desktop\Аня\описание графиков.docx: 'CoreProperties' object has no attribute 'creator'
+Ошибка при обработке DOCX C:\Users\Роман\Desktop\Аня\Шмакова А.А.docx: 'CoreProperties' object has no attribute 'creator'

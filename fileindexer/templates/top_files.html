@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Топ 10 файлов по размеру</h2>
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Имя файла</th>
+        <th scope="col">Путь</th>
+        <th scope="col">Размер (байт)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in top_files %}
+      <tr>
+        <td>{{ f.name }}</td>
+        <td>{{ f.path }}</td>
+        <td>{{ f.size_bytes }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
