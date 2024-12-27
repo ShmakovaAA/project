@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модули &mdash; FileIndexer 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to FileIndexer’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FileIndexer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.models.FileRecord"><code class="docutils literal notranslate"><span class="pre">FileRecord</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">FileRecord.DoesNotExist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">FileRecord.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.bitrate"><code class="docutils literal notranslate"><span class="pre">FileRecord.bitrate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.dpi"><code class="docutils literal notranslate"><span class="pre">FileRecord.dpi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.duration"><code class="docutils literal notranslate"><span class="pre">FileRecord.duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.extension"><code class="docutils literal notranslate"><span class="pre">FileRecord.extension</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.height"><code class="docutils literal notranslate"><span class="pre">FileRecord.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.id"><code class="docutils literal notranslate"><span class="pre">FileRecord.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.metadata"><code class="docutils literal notranslate"><span class="pre">FileRecord.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.modification_date"><code class="docutils literal notranslate"><span class="pre">FileRecord.modification_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.name"><code class="docutils literal notranslate"><span class="pre">FileRecord.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.objects"><code class="docutils literal notranslate"><span class="pre">FileRecord.objects</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.page_count"><code class="docutils literal notranslate"><span class="pre">FileRecord.page_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.page_format"><code class="docutils literal notranslate"><span class="pre">FileRecord.page_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.path"><code class="docutils literal notranslate"><span class="pre">FileRecord.path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.size_bytes"><code class="docutils literal notranslate"><span class="pre">FileRecord.size_bytes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.models.FileRecord.width"><code class="docutils literal notranslate"><span class="pre">FileRecord.width</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.management.commands.index_files.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.management.commands.index_files.Command.add_arguments"><code class="docutils literal notranslate"><span class="pre">Command.add_arguments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.management.commands.index_files.Command.handle"><code class="docutils literal notranslate"><span class="pre">Command.handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.management.commands.index_files.Command.help"><code class="docutils literal notranslate"><span class="pre">Command.help</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.general.GeneralResearcher"><code class="docutils literal notranslate"><span class="pre">GeneralResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.general.GeneralResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">GeneralResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.general.GeneralResearcher.supports"><code class="docutils literal notranslate"><span class="pre">GeneralResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.pdf.PDFResearcher"><code class="docutils literal notranslate"><span class="pre">PDFResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.pdf.PDFResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">PDFResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.pdf.PDFResearcher.supports"><code class="docutils literal notranslate"><span class="pre">PDFResearcher.supports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.pdf.PDFResearcher.which_format"><code class="docutils literal notranslate"><span class="pre">PDFResearcher.which_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.image.ImageResearcher"><code class="docutils literal notranslate"><span class="pre">ImageResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.image.ImageResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">ImageResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.image.ImageResearcher.supports"><code class="docutils literal notranslate"><span class="pre">ImageResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.docxresearcher.DocxResearcher"><code class="docutils literal notranslate"><span class="pre">DocxResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.docxresearcher.DocxResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">DocxResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.docxresearcher.DocxResearcher.supports"><code class="docutils literal notranslate"><span class="pre">DocxResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.excel.ExcelResearcher"><code class="docutils literal notranslate"><span class="pre">ExcelResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.excel.ExcelResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">ExcelResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.excel.ExcelResearcher.supports"><code class="docutils literal notranslate"><span class="pre">ExcelResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.audio.AudioResearcher"><code class="docutils literal notranslate"><span class="pre">AudioResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.audio.AudioResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">AudioResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.audio.AudioResearcher.supports"><code class="docutils literal notranslate"><span class="pre">AudioResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.researchers.video.VideoResearcher"><code class="docutils literal notranslate"><span class="pre">VideoResearcher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.video.VideoResearcher.get_info"><code class="docutils literal notranslate"><span class="pre">VideoResearcher.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.researchers.video.VideoResearcher.supports"><code class="docutils literal notranslate"><span class="pre">VideoResearcher.supports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.admin.FileRecordAdmin"><code class="docutils literal notranslate"><span class="pre">FileRecordAdmin</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.admin.FileRecordAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">FileRecordAdmin.list_display</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.admin.FileRecordAdmin.media"><code class="docutils literal notranslate"><span class="pre">FileRecordAdmin.media</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.admin.FileRecordAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">FileRecordAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.apps.FileindexerConfig"><code class="docutils literal notranslate"><span class="pre">FileindexerConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.apps.FileindexerConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">FileindexerConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.apps.FileindexerConfig.name"><code class="docutils literal notranslate"><span class="pre">FileindexerConfig.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileindexer.apps.FileindexerConfig.verbose_name"><code class="docutils literal notranslate"><span class="pre">FileindexerConfig.verbose_name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.views.stats"><code class="docutils literal notranslate"><span class="pre">stats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.views.top_docs"><code class="docutils literal notranslate"><span class="pre">top_docs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.views.top_files"><code class="docutils literal notranslate"><span class="pre">top_files()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fileindexer.views.top_images"><code class="docutils literal notranslate"><span class="pre">top_images()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FileIndexer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Модули</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fileindexer.models">
+<span id="id1"></span><h1>Модули<a class="headerlink" href="#module-fileindexer.models" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.models.</span></span><span class="sig-name descname"><span class="pre">FileRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/models.html#FileRecord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.models.FileRecord" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Модель для хранения информации о файлах.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.bitrate">
+<span class="sig-name descname"><span class="pre">bitrate</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.bitrate" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.dpi">
+<span class="sig-name descname"><span class="pre">dpi</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.dpi" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.duration">
+<span class="sig-name descname"><span class="pre">duration</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.duration" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.extension">
+<span class="sig-name descname"><span class="pre">extension</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.extension" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.height" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.metadata" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.modification_date">
+<span class="sig-name descname"><span class="pre">modification_date</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.modification_date" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.name" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#fileindexer.models.FileRecord.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.page_count">
+<span class="sig-name descname"><span class="pre">page_count</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.page_count" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.page_format">
+<span class="sig-name descname"><span class="pre">page_format</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.page_format" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.path" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.size_bytes">
+<span class="sig-name descname"><span class="pre">size_bytes</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.size_bytes" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.models.FileRecord.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#fileindexer.models.FileRecord.width" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.management.commands.index_files">
+<dt class="sig sig-object py" id="fileindexer.management.commands.index_files.Command">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.management.commands.index_files.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/management/commands/index_files.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.management.commands.index_files.Command" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCommand</span></code></p>
+<p>Команда для индексирования файлов в указанной директории и сохранения информации в базу данных.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.management.commands.index_files.Command.add_arguments">
+<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/management/commands/index_files.html#Command.add_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.management.commands.index_files.Command.add_arguments" title="Link to this definition"></a></dt>
+<dd><p>Добавляет аргументы для команды.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parser</strong> (<em>ArgumentParser</em>) – Парсер аргументов.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.management.commands.index_files.Command.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/management/commands/index_files.html#Command.handle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.management.commands.index_files.Command.handle" title="Link to this definition"></a></dt>
+<dd><p>Основной метод команды.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Дополнительные аргументы.</p></li>
+<li><p><strong>**options</strong> – Опции команды.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.management.commands.index_files.Command.help">
+<span class="sig-name descname"><span class="pre">help</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Индексирует</span> <span class="pre">файлы</span> <span class="pre">в</span> <span class="pre">указанной</span> <span class="pre">директории</span> <span class="pre">и</span> <span class="pre">сохраняет</span> <span class="pre">в</span> <span class="pre">базу</span> <span class="pre">данных.'</span></em><a class="headerlink" href="#fileindexer.management.commands.index_files.Command.help" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.general">
+<dt class="sig sig-object py" id="fileindexer.researchers.general.GeneralResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.general.</span></span><span class="sig-name descname"><span class="pre">GeneralResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/general.html#GeneralResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.general.GeneralResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для сбора общей информации о файлах.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.general.GeneralResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/general.html#GeneralResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.general.GeneralResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает общую информацию о файле, такую как размер в байтах.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о размере файла.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.general.GeneralResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/general.html#GeneralResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.general.GeneralResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Всегда возвращает True, поддерживает все типы файлов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Всегда True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.pdf">
+<dt class="sig sig-object py" id="fileindexer.researchers.pdf.PDFResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.pdf.</span></span><span class="sig-name descname"><span class="pre">PDFResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/pdf.html#PDFResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.pdf.PDFResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования PDF файлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.pdf.PDFResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/pdf.html#PDFResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.pdf.PDFResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из PDF файла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о количестве страниц, метаданных и формате страниц.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.pdf.PDFResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/pdf.html#PDFResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.pdf.PDFResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный PDF файл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .pdf, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.pdf.PDFResearcher.which_format">
+<span class="sig-name descname"><span class="pre">which_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/pdf.html#PDFResearcher.which_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.pdf.PDFResearcher.which_format" title="Link to this definition"></a></dt>
+<dd><p>Определяет формат страницы по ширине и высоте.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float</em>) – Ширина страницы.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Высота страницы.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Название формата страницы или “Неизвестный формат”.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.image">
+<dt class="sig sig-object py" id="fileindexer.researchers.image.ImageResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.image.</span></span><span class="sig-name descname"><span class="pre">ImageResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/image.html#ImageResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.image.ImageResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования изображений.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.image.ImageResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/image.html#ImageResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.image.ImageResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из изображения.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о размере, DPI и метаданных изображения.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.image.ImageResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/image.html#ImageResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.image.ImageResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный файл как изображение.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .jpg, .jpeg, .png, .gif, .bmp или .tiff, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.docxresearcher">
+<dt class="sig sig-object py" id="fileindexer.researchers.docxresearcher.DocxResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.docxresearcher.</span></span><span class="sig-name descname"><span class="pre">DocxResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/docxresearcher.html#DocxResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.docxresearcher.DocxResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования DOCX файлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.docxresearcher.DocxResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/docxresearcher.html#DocxResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.docxresearcher.DocxResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из DOCX файла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о файле, включая количество параграфов и метаданные.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.docxresearcher.DocxResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/docxresearcher.html#DocxResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.docxresearcher.DocxResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный DOCX файл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .docx, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.excel">
+<dt class="sig sig-object py" id="fileindexer.researchers.excel.ExcelResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.excel.</span></span><span class="sig-name descname"><span class="pre">ExcelResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/excel.html#ExcelResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.excel.ExcelResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования Excel файлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.excel.ExcelResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/excel.html#ExcelResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.excel.ExcelResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из Excel файла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о файле, включая количество листов и метаданные.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.excel.ExcelResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/excel.html#ExcelResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.excel.ExcelResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный Excel файл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .xlsx, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.audio">
+<dt class="sig sig-object py" id="fileindexer.researchers.audio.AudioResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.audio.</span></span><span class="sig-name descname"><span class="pre">AudioResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/audio.html#AudioResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.audio.AudioResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования аудио файлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.audio.AudioResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/audio.html#AudioResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.audio.AudioResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из аудио файла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о файле, включая длительность и битрейт.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.audio.AudioResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/audio.html#AudioResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.audio.AudioResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный аудио файл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .mp3, .wav, .m4a или .flac, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.researchers.video">
+<dt class="sig sig-object py" id="fileindexer.researchers.video.VideoResearcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.researchers.video.</span></span><span class="sig-name descname"><span class="pre">VideoResearcher</span></span><a class="reference internal" href="_modules/fileindexer/researchers/video.html#VideoResearcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.video.VideoResearcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseResearcher</span></code></p>
+<p>Класс для исследования видео файлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.video.VideoResearcher.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/video.html#VideoResearcher.get_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.video.VideoResearcher.get_info" title="Link to this definition"></a></dt>
+<dd><p>Извлекает информацию из видео файла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь с информацией о разрешении, длительности и метаданных видео.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fileindexer.researchers.video.VideoResearcher.supports">
+<span class="sig-name descname"><span class="pre">supports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/fileindexer/researchers/video.html#VideoResearcher.supports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.researchers.video.VideoResearcher.supports" title="Link to this definition"></a></dt>
+<dd><p>Проверяет, поддерживается ли данный видео файл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Путь к файлу.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если файл имеет расширение .mp4, .avi, .mkv, .mov или .wmv, иначе False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.admin">
+<dt class="sig sig-object py" id="fileindexer.admin.FileRecordAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.admin.</span></span><span class="sig-name descname"><span class="pre">FileRecordAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/admin.html#FileRecordAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.admin.FileRecordAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<p>Административный интерфейс для модели FileRecord.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.admin.FileRecordAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'extension',</span> <span class="pre">'size_bytes',</span> <span class="pre">'modification_date')</span></em><a class="headerlink" href="#fileindexer.admin.FileRecordAdmin.list_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="fileindexer.admin.FileRecordAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#fileindexer.admin.FileRecordAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.admin.FileRecordAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('name',</span> <span class="pre">'path',</span> <span class="pre">'extension')</span></em><a class="headerlink" href="#fileindexer.admin.FileRecordAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-fileindexer.apps">
+<dt class="sig sig-object py" id="fileindexer.apps.FileindexerConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fileindexer.apps.</span></span><span class="sig-name descname"><span class="pre">FileindexerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/apps.html#FileindexerConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.apps.FileindexerConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<p>Конфигурация приложения Fileindexer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.apps.FileindexerConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#fileindexer.apps.FileindexerConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.apps.FileindexerConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fileindexer'</span></em><a class="headerlink" href="#fileindexer.apps.FileindexerConfig.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fileindexer.apps.FileindexerConfig.verbose_name">
+<span class="sig-name descname"><span class="pre">verbose_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Индексатор</span> <span class="pre">файлов'</span></em><a class="headerlink" href="#fileindexer.apps.FileindexerConfig.verbose_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-fileindexer.views">
+<dt class="sig sig-object py" id="fileindexer.views.index">
+<span class="sig-prename descclassname"><span class="pre">fileindexer.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.views.index" title="Link to this definition"></a></dt>
+<dd><p>Представление для главной страницы.</p>
+<p>Вычисляет общий размер файлов и отображает его.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – Объект HTTP запроса.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с отрендеренным шаблоном.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fileindexer.views.stats">
+<span class="sig-prename descclassname"><span class="pre">fileindexer.views.</span></span><span class="sig-name descname"><span class="pre">stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/views.html#stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.views.stats" title="Link to this definition"></a></dt>
+<dd><p>Представление для отображения статистики по расширениям файлов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – Объект HTTP запроса.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с отрендеренным шаблоном.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fileindexer.views.top_docs">
+<span class="sig-prename descclassname"><span class="pre">fileindexer.views.</span></span><span class="sig-name descname"><span class="pre">top_docs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/views.html#top_docs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.views.top_docs" title="Link to this definition"></a></dt>
+<dd><p>Представление для отображения топ-10 документов по количеству страниц/параграфов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – Объект HTTP запроса.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с отрендеренным шаблоном.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fileindexer.views.top_files">
+<span class="sig-prename descclassname"><span class="pre">fileindexer.views.</span></span><span class="sig-name descname"><span class="pre">top_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/views.html#top_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.views.top_files" title="Link to this definition"></a></dt>
+<dd><p>Представление для отображения топ-10 самых больших файлов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – Объект HTTP запроса.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с отрендеренным шаблоном.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fileindexer.views.top_images">
+<span class="sig-prename descclassname"><span class="pre">fileindexer.views.</span></span><span class="sig-name descname"><span class="pre">top_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fileindexer/views.html#top_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fileindexer.views.top_images" title="Link to this definition"></a></dt>
+<dd><p>Представление для отображения топ-10 изображений по площади.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – Объект HTTP запроса.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с отрендеренным шаблоном.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-fileindexer.urls"></span></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to FileIndexer’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
